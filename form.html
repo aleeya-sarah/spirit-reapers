@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery Estimator | Spirit Reapers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="ambient-glow"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spirit Reapers home">
+      <span class="brand-name">Spirit Reapers</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Founder</a>
+      <a href="form.html" aria-current="page">Kiosk</a>
+    </nav>
+  </header>
+
+  <main class="estimator">
+    
+    <section class="hero-slider">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide active"
+          style="background-image: linear-gradient(rgba(10,12,16,0.65), rgba(10,12,16,0.65)), url('images/slide-1.jpeg');">
+          <div class="slide-content">
+            <span class="badge">🚨 Emergency Response</span>
+            <h2>Something Is in Your House?</h2>
+            <p>Don't let the darkness take over. Our team is ready to investigate and remove unwanted entities.</p>
+            <strong>Your safety is our priority.</strong>
+          </div>
+        </div>
+
+        <div class="slide"
+          style="background-image: linear-gradient(rgba(10,12,16,0.65), rgba(10,12,16,0.65)), url('images/slide-2.jpeg');">
+          <div class="slide-content">
+            <span class="badge">🛡️ Professional Service</span>
+            <h2>We Face What You Fear</h2>
+            <p>From wandering spirits to severe hauntings, our specialists are prepared to handle every paranormal situation.</p>
+            <strong>Professional Care. Reliable Service.</strong>
+          </div>
+        </div>
+
+        <div class="slide"
+          style="background-image: linear-gradient(rgba(10,12,16,0.65), rgba(10,12,16,0.65)), url('images/slide-3.jpeg');">
+          <div class="slide-content">
+            <span class="badge">🌙 Available 24/7</span>
+            <h2>Fear Doesn't Wait. Neither Do We.</h2>
+            <p>Day or night, our emergency response team is ready when paranormal disturbances strike.</p>
+            <strong>Available 24 Hours, 7 Days a Week.</strong>
+          </div>
+        </div>
+      </div>
+
+      <button id="prevBtn" class="slider-btn prev-btn" aria-label="Previous slide">&#10094;</button>
+      <button id="nextBtn" class="slider-btn next-btn" aria-label="Next slide">&#10095;</button>
+
+      <div class="slider-dots" id="sliderDots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </section>
+
+    <section class="ghost-types-section" aria-labelledby="ghost-types-title">
+      <h2 id="ghost-types-title">Select the Entity Type to Manage</h2>
+      <p class="section-desc">Find out the types of ghosts we typically deal with, and then get a cost estimate below.</p>
+
+      <div class="ghost-cards-grid">
+        <div class="ghost-info-card">
+          <div class="card-img-container">
+            <img src="images/wandering.jpeg" alt="Wandering Spirit" class="ghost-img">
+          </div>
+          <h3>Wandering Spirit</h3>
+          <p class="price-tag">RM 100.00</p>
+          <p>A harmless but disruptive wandering spirit that disturbs the peace of your home or office at night.</p>
+          <a href="#estimator-form" class="btn btn-secondary select-ghost-btn" data-value="40">Estimate Delivery</a>
+        </div>
+
+        <div class="ghost-info-card">
+          <div class="card-img-container">
+            <img src="images/poltergeist.jpeg" alt="Poltergeist" class="ghost-img">
+          </div>
+          <h3>Poltergeist</h3>
+          <p class="price-tag">RM 200.00</p>
+          <p>An active entity that enjoys moving or throwing objects. Requires a rapid response unit.</p>
+          <a href="#estimator-form" class="btn btn-secondary select-ghost-btn" data-value="70">Estimate Delivery</a>
+        </div>
+
+        <div class="ghost-info-card">
+          <div class="card-img-container">
+            <img src="images/long-term.jpg" alt="Long-term Haunting" class="ghost-img">
+          </div>
+          <h3>Long-term Haunting</h3>
+          <p class="price-tag">RM 250.00</p>
+          <p>A severe haunting that has taken deep root in the old premises. It requires a comprehensive exorcism ritual and a special seal.</p>
+          <a href="#estimator-form" class="btn btn-secondary select-ghost-btn" data-value="120">Estimate Delivery</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <div class="estimator-header">
+      <h1>Delivery Estimator Form</h1>
+      <p class="lead">Fill in the details below to estimate delivery cost of spiritual cleansing for your premises.</p>
+    </div>
+
+    <div class="layout">
+      <form id="estimator-form" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name">
+          <p class="error" id="name-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+          <p class="error" id="email-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="distance">Distance from our office (km)</label>
+          <input id="distance" name="distance" type="number" min="1" max="500" step="0.1" inputmode="decimal">
+          <p class="error" id="distance-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="ghost">Type of ghost</label>
+          <select id="ghost" name="ghost">
+            <option value="">Choose a type</option>
+            <option value="100">Wandering spirit (RM 100)</option>
+            <option value="200">Poltergeist (RM 200)</option>
+            <option value="250">Long-term haunting (RM 250)</option>
+          </select>
+          <p class="error" id="ghost-error" role="alert"></p>
+        </div>
+
+<div class="field">
+  <label for="destination">Destination (Town / Postcode)</label>
+  <input
+    id="destination"
+    name="destination"
+    type="text"
+    placeholder="e.g. Pekan, 26600"
+    required
+  >
+  <p class="error" id="destination-error" role="alert"></p>
+</div>
+
+<div class="field">
+  <label for="propertySize">Property Size</label>
+  <select id="propertySize" name="propertySize" required>
+    <option value="">Choose property size</option>
+    <option value="150">Small (RM 150)</option>
+    <option value="250">Medium (RM 250)</option>
+    <option value="300">Large (RM 300)</option>
+  </select>
+  <p class="error" id="propertySize-error" role="alert"></p>
+</div>
+
+        <div class="field">
+          <label for="area">Affected Area</label>
+          <select id="area" name="area" required>
+            <option value="">Choose affected area</option>
+            <option value="Bedroom">Bedroom</option>
+            <option value="Living Room">Living Room</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Bathroom">Bathroom</option>
+            <option value="Entire Property">Entire Property</option>
+          </select>
+          <p class="error" id="area-error" role="alert"></p>
+        </div>
+
+        <fieldset class="field">
+          <legend>Delivery speed</legend>
+          <label class="choice"><input type="radio" name="speed" value="standard" checked> Standard, 2 to 3 days</label>
+          <label class="choice"><input type="radio" name="speed" value="express"> Express, same day (+50%)</label>
+          <label class="choice"><input type="radio" name="speed" value="midnight"> Midnight call-out, within 3 hours (+100%)</label>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Add-ons</legend>
+          <label class="choice"><input type="checkbox" name="addon" value="25"> Salt circle seal (RM 25)</label>
+          <label class="choice"><input type="checkbox" name="addon" value="35"> Blessing of the house (RM 35)</label>
+        </fieldset>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Get estimate</button>
+          <button class="btn ghost-btn" type="reset" id="reset-btn">Clear form</button>
+        </div>
+      </form>
+
+      <aside id="result" class="result" aria-live="polite">
+        <h2>Your estimate</h2>
+        <p class="empty">Fill in the form and choose Get estimate. Your cost and arrival time appear here.</p>
+      </aside>
+    </div>
+
+<section class="rules" aria-labelledby="rules-title">
+  <h2 id="rules-title">Service Estimation Guidelines</h2>
+
+  <p>
+    Our service estimates are calculated based on the selected entity type,
+    travel distance, additional services and requested response speed.
+  </p><br>
+
+  <ul>
+    <li>
+      <strong>Ghost Removal Fee:</strong>
+      Wandering Spirit (RM 100.00), Poltergeist (RM 200.00),
+      and Long-term Haunting (RM 250.00).
+    </li>
+
+    <li>
+      <strong>Travel Fee:</strong>
+      RM 1.50 per kilometre from our office.
+      Accepted distance ranges from 1 to 500 km.
+    </li>
+
+     <li>
+      <strong>Property Size:</strong>
+      Small (RM 150.00), Medium (RM 250.00), Large (RM 300.00).
+    </li>
+
+    <li>
+      <strong>Destination:</strong>
+      Customers must provide their destination town or postcode.
+    </li>
+
+
+    <li>
+      <strong>Affected Area:</strong>
+      Customers must identify the affected location:
+      Bedroom, Living Room, Kitchen, Bathroom or Entire Property.
+    </li>
+
+    <li>
+      <strong>Additional Services:</strong>
+      Salt Circle Seal (RM 25.00) and Blessing of the House (RM 35.00).
+      These services are optional.
+    </li>
+
+    <li>
+      <strong>Delivery Speed:</strong>
+      Standard (no additional charge), Express (+50%) or
+      Midnight Call-out (+100%). The surcharge applies to the entire subtotal.
+    </li>
+  </ul><br>
+
+  <p class="rules-note">
+    <strong>Note:</strong> Severity Level, Haunting Duration and Affected Area
+    are collected for service assessment. They do not currently add extra
+    charges to the estimated total.
+  </p>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Spirit Reapers. All rights reserved.</p>
+  </footer>
+
+  <script src="form.js"></script>
+</body>
+</html>
