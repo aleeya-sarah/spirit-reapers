@@ -1,12 +1,8 @@
-
 (function () {
   "use strict";
 
   const form = document.getElementById("estimator-form");
 
-  // =========================================================
-  // DELIVERY ESTIMATOR
-  // =========================================================
   if (form) {
     const result = document.getElementById("result");
 
@@ -79,7 +75,6 @@
       showSpeedError("");
     }
 
-    // Clear errors when the user changes a field
     requiredFieldIds.forEach(function (id) {
       const field = document.getElementById(id);
       if (!field) return;
@@ -97,9 +92,6 @@
       radio.addEventListener("change", clearSpeedError);
     });
 
-    // =========================================================
-    // VALIDATION - ALL REQUIRED FIELDS
-    // =========================================================
     function validateForm() {
       requiredFieldIds.forEach(clearError);
       clearSpeedError();
@@ -148,14 +140,17 @@
       }
 
       if (!destination) {
-  showError("destination", "Destination is required.");
-  isValid = false;
-}
+    showError("destination", "Destination is required.");
+    isValid = false;
+      } else if (destination.length < 3) {
+          showError("destination", "Please enter a valid destination.");
+          isValid = false;
+      }
 
-if (!propertySize) {
-  showError("propertySize", "Please select property size.");
-  isValid = false;
-}
+      if (!propertySize) {
+        showError("propertySize", "Please select property size.");
+        isValid = false;
+      }
 
       if (!area) {
         showError("area", "Please select the affected area.");
@@ -170,9 +165,6 @@ if (!propertySize) {
       return isValid;
     }
 
-    // =========================================================
-    // CALCULATION
-    // =========================================================
     function calculateEstimate() {
   const distance = Number(
     document.getElementById("distance").value
@@ -200,7 +192,7 @@ if (!propertySize) {
 
   const speed = SPEED[speedChoice.value];
 
-  const travel = distance * RATE_PER_KM;
+  
 
   let addons = 0;
   const addonNames = [];
@@ -211,9 +203,13 @@ if (!propertySize) {
       addonNames.push(addon.parentNode.textContent.trim());
     });
 
+  const travel = distance * RATE_PER_KM;
+
   const subtotal = ghostFee + travel + propertyFee + addons;
 
   const speedCharge = subtotal * (speed.multiplier - 1);
+
+  const total = subtotal + speedCharge;
 
   return {
     name: document.getElementById("name").value.trim(),
@@ -230,12 +226,10 @@ if (!propertySize) {
     addonNames: addonNames,
     speed: speed,
     speedCharge: speedCharge,
-    total: subtotal + speedCharge
+    total: total
   };
 }
-    // =========================================================
-    // DISPLAY RESULT
-    // =========================================================
+  
     function showResult(data) {
       const addonText = data.addonNames.length
         ? escapeHtml(data.addonNames.join(", "))
@@ -289,7 +283,7 @@ if (data.speedCharge > 0) {
   "<li>Speed: " + escapeHtml(data.speed.label) +
     ", " + escapeHtml(data.speed.note) + "</li>",
   "<li>Add-ons: " + addonText + "</li>"
-].join("");
+  ].join("");
 
       result.innerHTML =
         "<h2>Estimate for " +
@@ -318,9 +312,6 @@ if (data.speedCharge > 0) {
       result.classList.add("reveal");
     }
 
-    // =========================================================
-    // SUBMIT FORM
-    // =========================================================
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -350,9 +341,6 @@ alert(
 );
     });
 
-    // =========================================================
-    // RESET FORM
-    // =========================================================
     const resetButton = document.getElementById("reset-btn");
 
     if (resetButton) {
@@ -377,9 +365,6 @@ alert(
     });
   }
 
-  // =========================================================
-  // HERO SLIDER
-  // =========================================================
   const sliderTrack = document.getElementById("sliderTrack");
   const sliderSlides =
     document.querySelectorAll(".hero-slider .slide");
@@ -448,9 +433,6 @@ alert(
     displaySlide(0);
   }
 
-  // =========================================================
-  // AUTO-SELECT GHOST TYPE FROM GHOST CARDS
-  // =========================================================
   document.querySelectorAll(".select-ghost-btn").forEach(function (button) {
     button.addEventListener("click", function () {
       const ghostSelect = document.getElementById("ghost");
